@@ -32,7 +32,7 @@
             font-family: 'Arial Black', sans-serif;
             font-size: 2rem;
             font-weight: bold;
-            color: #FFFFFF; /* Removed text-shadow to revoke shiny effect */
+            color: #FFFFFF;
         }
         nav {
             background-color: #000000;
@@ -93,6 +93,7 @@
             justify-content: center;
             text-align: center;
             background-size: cover;
+            background-position: center;
             color: white;
             animation: slideShine 5s infinite;
         }
@@ -312,6 +313,43 @@
                 right: 10px;
             }
         }
+        .selection-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+        select {
+            padding: 5px;
+            font-size: 1rem;
+            border: 2px solid #FDB927;
+            border-radius: 5px;
+            background-color: #000000;
+            color: #FDB927;
+            cursor: pointer;
+        }
+        select option {
+            background-color: #000000;
+            color: #FDB927;
+        }
+        .nav-buttons {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .nav-buttons button {
+            background-color: #552583;
+            color: #FDB927;
+            border: 2px solid #FDB927;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-buttons button:hover {
+            background-color: #3F2055;
+            box-shadow: 0 0 10px #FDB927;
+        }
     </style>
 </head>
 <body>
@@ -328,30 +366,44 @@
         </ul>
     </nav>
     <div class="content">
+        <div class="selection-container">
+            <label for="slideSelect">Select Slideshow Image:</label>
+            <select id="slideSelect" onchange="changeSlide()">
+                <option value="0">Welcome to ADBA!</option>
+                <option value="1">Our beloved Bhaskar Reddy sir</option>
+                <option value="2">Community Day</option>
+                <option value="3">Additional Image 1 (Placeholder)</option>
+                <option value="4">Additional Image 2 (Placeholder)</option>
+            </select>
+        </div>
         <div id="slideshow">
-            <div class="slide active" style="background-image: url('https://scontent.fvga2-1.fna.fbcdn.net/v/t39.30808-6/485094591_1198615425602270_2071492870669749534_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=meHMpRW6MqQQ7kNvwHiyUzt&_nc_oc=AdnfmjcE8SMWtUKqoqecyRTQ5WkzumVJde267DmN_Yz6PhhwwJBdBqb1N2n07tpvluBzCaOYBX97hAp7H_inkgXT&_nc_zt=23&_nc_ht=scontent.fvga2-1.fna&_nc_gid=3abWgz6H10pabRSiKqQKhg&oh=00_AfEs1qKvBQzs0qRZInex60UWVMhCSy6QY9NfXlxs3c4_zA&oe=6816FF78?q=80&w=1200&auto=format&fit=crop');">
+            <div class="slide active" style="background-image: url('https://scontent.fvga2-1.fna.fbcdn.net/v/t39.30808-6/485094591_1198615425602270_2071492870669749534_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=meHMpRW6MqQQ7kNvwHiyUzt&_nc_oc=AdnfmjcE8SMWtUKqoqecyRTQ5WkzumVJde267DmN_Yz6PhhwwJBdBqb1N2n07tpvluBzCaOYBX97hAp7H_inkgXT&_nc_zt=23&_nc_ht=scontent.fvga2-1.fna&_nc_gid=3abWgz6H10pabRSiKqQKhg&oh=00_AfEs1qKvBQzs0qRZInex60UWVMhCSy6QY9NfXlxs3c4_zA&oe=6816FF78');">
                 <div class="title">Welcome to ADBA!</div>
                 <div class="description">Join us for an exciting 2025 basketball season in Ananthapuramu District.</div>
             </div>
-            <div class="slide" style="background-image: url('https://scontent.fvga2-1.fna.fbcdn.net/v/t39.30808-6/463230970_2876914819122797_1663557415765265944_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=7tvXdVmSZ-kQ7kNvwFuwwLa&_nc_oc=AdkLL9c_oig15RjtOqdCGEO_urGLR76t0dQeUdY9tQuXKWx8yp7Tojef5HO3cZoJuZi7c9El5D6aqlWx2sfLoCld&_nc_zt=23&_nc_ht=scontent.fvga2-1.fna&_nc_gid=Y1XforssaAhQtEfVlYR09g&oh=00_AfETZrrTiIPiJB0YFH9401Z5L1-M6XgWxYXTteuMvckqsg&oe=68170452?q=80&w=1200&auto=format&fit=crop');">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1515523110800-9415d13b84a9?q=80&w=1200&auto=format&fit=crop');">
                 <div class="title">Our beloved Bhaskar Reddy sir</div>
-                <div class="description">Remembering our former Basketball president of AP </div>
+                <div class="description">Remembering our former Basketball president of AP</div>
             </div>
-            <div class="slide" style="background-image: url('https://scontent.fvga2-5.fna.fbcdn.net/v/t39.30808-6/462368510_2867181306762815_8496039909620920712_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=oxcQyy_I8H4Q7kNvwHaxMr-&_nc_oc=AdnaVkA9A7ZvJadozSy9mFCGsVV5eWgCVHoISVxYqYMuzkMyanbBVsap4TWlOSa49FGYV9sh_AProJy2BZuYr4f-&_nc_zt=23&_nc_ht=scontent.fvga2-5.fna&_nc_gid=TR42l3Yyanhkk7UxFyPa5w&oh=00_AfGmeLhaJqPPKnUA6BzUC_PkmSRQU06y2oMpaaEqfEi9bw&oe=6816E4EC?q=80&w=1200&auto=format&fit=crop');">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1464349153735-7db50ed83c84?q=80&w=1200&auto=format&fit=crop');">
                 <div class="title">Community Day</div>
                 <div class="description">Where you all draw from Ananthapuramu SSBN Stadium.</div>
             </div>
         </div>
+        <div class="nav-buttons">
+            <button onclick="prevSlide()"><</button>
+            <button onclick="nextSlide()">></button>
+        </div>
         <div class="media-section">
             <div id="youtube-carousel">
                 <div class="video-slide active">
-                    <iframe src="https://www.youtube.com/watch?v=bfiwfx6y6Wg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/bfiwfx6y6Wg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-slide">
-                    <iframe src="https://www.youtube.com/watch?v=f7C5uYCiAs0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/f7C5uYCiAs0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-slide">
-                    <iframe src="https://www.youtube.com/watch?v=5t7E1qQWegI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/5t7E1qQWegI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="social-feeds" class="feed">
@@ -371,6 +423,10 @@
                 <p>Note: Replace with official embeds from your ADBA Twitter and Facebook pages.</p>
             </div>
         </div>
+        <div class="nav-buttons">
+            <button onclick="prevVideo()"><</button>
+            <button onclick="nextVideo()">></button>
+        </div>
         <section id="team">
             <h2>Our Team</h2>
             <ul>
@@ -382,7 +438,7 @@
         <section id="schedule">
             <h2>Upcoming Games</h2>
             <ul>
-                <li>U23 3X3  Inter District Basketball championship in the last week of May 2025 Or The First week of June at Vijayawada.[Later the camp will be in Chittoor. Nationals will be from 12th to 14th June 2025 at Kochi , Kerala.]</li>
+                <li>U23 3X3 Inter District Basketball championship in the last week of May 2025 Or The First week of June at Vijayawada.[Later the camp will be in Chittoor. Nationals will be from 12th to 14th June 2025 at Kochi , Kerala.]</li>
                 <li>May 15th to 18th, 2025 at PES public school, Chittoor, Andhra Pradesh</li>
                 <li></li>
             </ul>
@@ -431,6 +487,67 @@
         }
         setInterval(showVideoSlides, 5000);
         showVideoSlides();
+
+        // Change slideshow image based on selection
+        function changeSlide() {
+            const select = document.getElementById('slideSelect');
+            const selectedIndex = parseInt(select.value);
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === selectedIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            slideIndex = selectedIndex; // Update slideIndex to sync with auto-rotation
+        }
+
+        // Navigate slideshow
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            document.getElementById('slideSelect').value = slideIndex; // Sync dropdown
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            document.getElementById('slideSelect').value = slideIndex; // Sync dropdown
+        }
+
+        // Navigate YouTube carousel
+        function prevVideo() {
+            videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
+            videoSlides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === videoIndex) {
+                    slide.classList.add('active');
+                    const iframe = slide.querySelector('iframe');
+                    iframe.src = iframe.src; // Reset src to reload the video
+                }
+            });
+        }
+
+        function nextVideo() {
+            videoIndex = (videoIndex + 1) % videoSlides.length;
+            videoSlides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === videoIndex) {
+                    slide.classList.add('active');
+                    const iframe = slide.querySelector('iframe');
+                    iframe.src = iframe.src; // Reset src to reload the video
+                }
+            });
+        }
     </script>
 </body>
 </html>
