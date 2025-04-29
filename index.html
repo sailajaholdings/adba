@@ -1,1 +1,347 @@
-Hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananthapuramu District Basketball Association</title>
+    <link href="https://fonts.googleapis.com/css2?family=Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Garamond', serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #87CEEB;
+            color: #000000;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            background-color: #1a237e;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #bbdefb;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #slideshow {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            color: white;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        .slide .title {
+            font-size: 2rem;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .slide .description {
+            font-size: 1.2rem;
+            padding: 0 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        #youtube-carousel {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-slide.active {
+            display: flex;
+        }
+        .video-slide iframe {
+            width: 320px;
+            height: 180px;
+        }
+        #social-feeds {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .feed h3 {
+            margin-top: 0;
+            color: #1a237e;
+        }
+        .feed ul {
+            list-style: none;
+            padding: 0;
+        }
+        .feed ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #contact {
+            padding: 10px 20px; /* Slimmed down */
+            margin-bottom: 20px;
+        }
+        #contact p {
+            margin: 5px 0; /* Reduced spacing */
+        }
+        .social-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 10;
+        }
+        .social-section p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .x { color: #000000; }
+        .facebook { color: #1877f2; }
+        .instagram { color: #e4405f; }
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            .content {
+                padding: 0 10px;
+            }
+            #slideshow {
+                height: 200px;
+            }
+            .slide .title {
+                font-size: 1.5rem;
+            }
+            .slide .description {
+                font-size: 1rem;
+            }
+            #youtube-carousel {
+                height: 150px;
+            }
+            .video-slide iframe {
+                width: 280px;
+                height: 158px;
+            }
+            .social-section {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ananthapuramu District Basketball Association</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div id="slideshow">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1518611012118-69661456b98f?q=80&w=1200&auto=format&fit=crop');">
+                <div class="title">Welcome to ADBA Season!</div>
+                <div class="description">Join us for an exciting 2025 basketball season in Ananthapuramu District.</div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1515523110800-9415d13b84a9?q=80&w=1200&auto=format&fit=crop');">
+                <div class="title">Game Highlights</div>
+                <div class="description">Check out our latest victory on April 28, 2025, at the local court!</div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1464349153735-7db50ed83c84?q=80&w=1200&auto=format&fit=crop');">
+                <div class="title">Community Day</div>
+                <div class="description">Join our free event on May 10, 2025, at Ananthapuramu Stadium.</div>
+            </div>
+        </div>
+        <div id="youtube-carousel">
+            <div class="video-slide active">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-slide">
+                <iframe src="https://www.youtube.com/embed/3tmd-ClpJxA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-slide">
+                <iframe src="https://www.youtube.com/embed/ZHVVc1Nkx2o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div id="social-feeds" class="feed">
+            <h3>Social Updates</h3>
+            <h4>Twitter</h4>
+            <ul>
+                <li>Apr 29, 2025: Excited for our next game vs. Titans! #ADBA #Basketball [Mock Post]</li>
+                <li>Apr 28, 2025: Great win today! Thanks to our fans. #Ananthapuramu #ADBA [Mock Post]</li>
+                <li>Apr 27, 2025: Training camp starts tomorrow. Stay tuned! #ADBA [Mock Post]</li>
+            </ul>
+            <h4>Facebook</h4>
+            <ul>
+                <li>Apr 29, 2025: Join us for the Community Day on May 10! Details on our page. [Placeholder]</li>
+                <li>Apr 28, 2025: Highlights from today's victory! Check our page for photos. [Placeholder]</li>
+                <li>Apr 27, 2025: Training updates coming soon. Like us for more! [Placeholder]</li>
+            </ul>
+            <p>Note: Replace with official embeds from your ADBA Twitter and Facebook pages.</p>
+        </div>
+        <section id="team">
+            <h2>Our Team</h2>
+            <ul>
+                <li>Coach: John Doe - 10 years of experience</li>
+                <li>Player 1: Jane Smith - Point Guard</li>
+                <li>Player 2: Mike Johnson - Center</li>
+            </ul>
+        </section>
+        <section id="schedule">
+            <h2>Upcoming Games</h2>
+            <ul>
+                <li>May 5, 2025 - vs. Rivals @ 7 PM</li>
+                <li>May 12, 2025 - vs. Titans @ 6 PM</li>
+                <li>May 19, 2025 - vs. Eagles @ 8 PM</li>
+            </ul>
+        </section>
+        <section id="news">
+            <h2>Latest News</h2>
+            <p>April 29, 2025: Exciting win against the Titans last week! Stay tuned for more updates.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: info@adba.org</p>
+            <p>Phone: (123) 456-7890</p>
+        </section>
+    </div>
+    <div class="social-section">
+        <p>Follow us for more content!</p>
+        <div class="social-icons">
+            <a href="https://x.com" target="_blank" class="x" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" class="facebook" title="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" class="instagram" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <footer>
+        <p>2025. ADBA. All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+        setInterval(showSlides, 5000);
+        showSlides();
+
+        // YouTube carousel functionality
+        let videoIndex = 0;
+        const videoSlides = document.querySelectorAll('.video-slide');
+        function showVideoSlides() {
+            videoSlides.forEach(slide => slide.classList.remove('active'));
+            videoIndex = (videoIndex + 1) % videoSlides.length;
+            videoSlides[videoIndex].classList.add('active');
+        }
+        setInterval(showVideoSlides, 5000);
+        showVideoSlides();
+    </script>
+</body>
+</html>
