@@ -65,7 +65,7 @@
         #slideshow {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 400px;
             overflow: hidden;
             margin-bottom: 20px;
             border: 2px solid #FDB927;
@@ -133,7 +133,7 @@
         #youtube-carousel {
             position: relative;
             width: 50%;
-            height: 200px;
+            height: 300px;
             overflow: hidden;
             border: 2px solid #FDB927;
             border-radius: 8px;
@@ -313,23 +313,6 @@
                 right: 10px;
             }
         }
-        .selection-container {
-            margin: 10px 0;
-            text-align: center;
-        }
-        select {
-            padding: 5px;
-            font-size: 1rem;
-            border: 2px solid #FDB927;
-            border-radius: 5px;
-            background-color: #000000;
-            color: #FDB927;
-            cursor: pointer;
-        }
-        select option {
-            background-color: #000000;
-            color: #FDB927;
-        }
         .nav-buttons {
             margin: 10px 0;
             text-align: center;
@@ -366,16 +349,6 @@
         </ul>
     </nav>
     <div class="content">
-        <div class="selection-container">
-            <label for="slideSelect">Select Slideshow Image:</label>
-            <select id="slideSelect" onchange="changeSlide()">
-                <option value="0">Welcome to ADBA!</option>
-                <option value="1">Our beloved Bhaskar Reddy sir</option>
-                <option value="2">Community Day</option>
-                <option value="3">Additional Image 1 (Placeholder)</option>
-                <option value="4">Additional Image 2 (Placeholder)</option>
-            </select>
-        </div>
         <div id="slideshow">
             <div class="slide active" style="background-image: url('https://scontent.fvga2-1.fna.fbcdn.net/v/t39.30808-6/485094591_1198615425602270_2071492870669749534_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=meHMpRW6MqQQ7kNvwHiyUzt&_nc_oc=AdnfmjcE8SMWtUKqoqecyRTQ5WkzumVJde267DmN_Yz6PhhwwJBdBqb1N2n07tpvluBzCaOYBX97hAp7H_inkgXT&_nc_zt=23&_nc_ht=scontent.fvga2-1.fna&_nc_gid=3abWgz6H10pabRSiKqQKhg&oh=00_AfEs1qKvBQzs0qRZInex60UWVMhCSy6QY9NfXlxs3c4_zA&oe=6816FF78');">
                 <div class="title">Welcome to ADBA!</div>
@@ -416,7 +389,7 @@
                 </ul>
                 <h4>Facebook</h4>
                 <ul>
-                    <li>Apr 29, 2025: Join us for the Community Day on May 10! Details on our page. [Placeholder]</li>
+                    <li>confirmation of Community Day on May 10! Details on our page. [Placeholder]</li>
                     <li>Apr 28, 2025: Highlights from today's victory! Check our page for photos. [Placeholder]</li>
                     <li>Apr 27, 2025: Training updates coming soon. Like us for more! [Placeholder]</li>
                 </ul>
@@ -430,9 +403,10 @@
         <section id="team">
             <h2>Our Team</h2>
             <ul>
-                <li>Coach: Afash Khan & Mohan Raju - 3 years of experience</li>
-                <li>Player 1:  - Point Guard</li>
-                <li>Player 2:  - Center</li>
+                <li>Coaches: </li>
+                <li>Afash Khan & Mohan Raju - Indoor Stadium</li>
+                <li>Narendra Krishna - SSBN Degree college </li>
+                <li>Jeelan Basha - PTC grounds</li>
             </ul>
         </section>
         <section id="schedule">
@@ -464,7 +438,6 @@
     <footer>
         <p>2025. ADBA. All Rights Reserved</p>
     </footer>
-
     <script>
         // Slideshow functionality
         let slideIndex = 0;
@@ -476,7 +449,6 @@
         }
         setInterval(showSlides, 5000);
         showSlides();
-
         // YouTube carousel functionality
         let videoIndex = 0;
         const videoSlides = document.querySelectorAll('.video-slide');
@@ -487,20 +459,6 @@
         }
         setInterval(showVideoSlides, 5000);
         showVideoSlides();
-
-        // Change slideshow image based on selection
-        function changeSlide() {
-            const select = document.getElementById('slideSelect');
-            const selectedIndex = parseInt(select.value);
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === selectedIndex) {
-                    slide.classList.add('active');
-                }
-            });
-            slideIndex = selectedIndex; // Update slideIndex to sync with auto-rotation
-        }
-
         // Navigate slideshow
         function prevSlide() {
             slideIndex = (slideIndex - 1 + slides.length) % slides.length;
@@ -510,9 +468,7 @@
                     slide.classList.add('active');
                 }
             });
-            document.getElementById('slideSelect').value = slideIndex; // Sync dropdown
         }
-
         function nextSlide() {
             slideIndex = (slideIndex + 1) % slides.length;
             slides.forEach((slide, index) => {
@@ -521,9 +477,7 @@
                     slide.classList.add('active');
                 }
             });
-            document.getElementById('slideSelect').value = slideIndex; // Sync dropdown
         }
-
         // Navigate YouTube carousel
         function prevVideo() {
             videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
@@ -536,7 +490,6 @@
                 }
             });
         }
-
         function nextVideo() {
             videoIndex = (videoIndex + 1) % videoSlides.length;
             videoSlides.forEach((slide, index) => {
