@@ -1,514 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5714554990558292"
+     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ananthapuramu District Basketball Association</title>
-    <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet">
+    <title>Pakodi Raajaa (పకొడి రాజా)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: radial-gradient(circle at center, #4B0082, #000000);
-            color: #FFFFFF;
+            background: linear-gradient(135deg, #f0f4f8, #e0e7f0);
+            color: #2c3e50;
+            font-family: 'Garamond', serif;
             line-height: 1.6;
-            overflow-x: hidden;
         }
         header {
-            background: linear-gradient(90deg, #552583, #3F2055);
-            color: #FFFFFF;
-            padding: 20px 0;
+            background: linear-gradient(#d3d6da, #c0c4c8);
+            padding: 30px 0;
             text-align: center;
-            box-shadow: 0 0 15px rgba(85, 37, 131, 0.7);
-            position: sticky;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 10;
-            transition: box-shadow 0.3s ease;
         }
         header h1 {
+            color: #000000;
+            font-size: 2.2rem;
             margin: 0;
-            font-family: 'Arial Black', sans-serif;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #FFFFFF;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
-        nav {
-            background-color: #000000;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
+        .tabs {
+            margin-top: 10px;
             display: flex;
             justify-content: center;
             gap: 20px;
         }
-        nav ul li a {
-            color: #FDB927;
-            text-decoration: none;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s ease, box-shadow 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #FFD700;
-            box-shadow: 0 0 10px #FDB927;
-        }
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        #slideshow {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 2px solid #FDB927;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #FDB927;
-        }
-        #slideshow::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
-            z-index: 1;
-            pointer-events: none;
-        }
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between; /* Changed to space-between to position elements */
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            animation: slideShine 5s infinite;
-            padding-bottom: 20px; /* Added padding to ensure description isn't too close to edge */
-            box-sizing: border-box;
-        }
-        .slide.active {
-            display: flex;
-        }
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-        .slide .title {
-            font-family: 'Arial Black', sans-serif;
-            font-size: 2rem;
-            margin: 10px 0;
-            text-shadow: 0 0 5px #552583;
-            z-index: 2;
-            padding-top: 20px; /* Added to position title near top */
-        }
-        .slide .description {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.2rem;
-            padding: 0 20px;
-            text-shadow: 0 0 5px #552583;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.5); /* Added semi-transparent background for readability */
-            width: 100%; /* Ensure description spans full width */
-            padding: 10px 0; /* Added padding for better appearance */
-        }
-        @keyframes slideShine {
-            0% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
-            100% { filter: brightness(1); }
-        }
-        .media-section {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        #youtube-carousel {
-            position: relative;
-            width: 50%;
-            height: 300px;
-            overflow: hidden;
-            border: 2px solid #FDB927;
-            border-radius: 8px;
-            background-color: #F5F5F5;
-            box-shadow: inset 0 0 10px rgba(253, 185, 39, 0.5);
-        }
-        .video-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-slide.active {
-            display: flex;
-        }
-        .video-slide iframe {
-            width: 100%;
-            height: 100%;
-        }
-        #social-feeds {
-            width: 50%;
-            height: 250px;
-            background-color: #F5F5F5;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: inset 0 0 10px rgba(253, 185, 39, 0.5);
-            overflow-y: auto;
-            color: #000000;
-        }
-        .feed h3 {
-            margin-top: 0;
-            font-family: 'Arial Black', sans-serif;
-            font-size: 1.5rem;
-            color: #000000;
-        }
-        .feed h4 {
-            margin: 10px 0 5px;
-            font-family: 'Arial', sans-serif;
-            color: #000000;
-        }
-        .feed ul {
-            list-style: none;
-            padding: 0;
-        }
-        .feed ul li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #E0E0E0;
-            border-radius: 5px;
-            color: #000000;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .feed p {
-            color: #000000;
-        }
-        section {
-            background-color: #F5F5F5;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(253, 185, 39, 0.3), inset 0 0 10px rgba(253, 185, 39, 0.2);
-            color: #000000;
-        }
-        #team, #schedule {
-            background-color: #552583;
-            color: #FDB927;
-            box-shadow: 0 0 15px #FDB927;
-        }
-        #team h2, #schedule h2 {
-            font-family: 'Arial Black', sans-serif;
-            font-size: 1.8rem;
-            color: #FDB927;
-        }
-        #team ul li, #schedule ul li {
-            font-family: 'Arial', sans-serif;
-            color: #FDB927;
-        }
-        #contact {
+        .tab {
+            cursor: pointer;
             padding: 10px 20px;
-            margin-bottom: 20px;
-        }
-        #contact p {
-            margin: 5px 0;
-        }
-        .social-section {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-            z-index: 10;
-        }
-        .social-section p {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            font-size: 0.9rem;
-            color: #FDB927;
-            background-color: #000000;
-            padding: 5px 10px;
+            background: #fff;
             border-radius: 5px;
-            box-shadow: 0 0 5px #FDB927;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+        .tab:hover {
+            background: #EDC967;
+        }
+        .tab.active {
+            background: #D4B055;
+            color: white;
+        }
+        main {
+            padding: 20px;
+            margin-top: 140px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .template {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            min-height: 200px;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .template:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+            margin: 0;
+            text-align: center;
         }
         .social-icons {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
-        .social-icons a {
+        .social-icons a, .share-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #FDB927;
-            border: 2px solid #552583;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             text-decoration: none;
             font-size: 1.2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 0 5px #FDB927;
+            background-color: white;
+            border: 2px dashed #EDC967;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .social-icons a:hover {
+        .social-icons a:hover, .share-link:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 15px #FDB927;
+            border-color: #D4B055;
         }
-        .x { color: #552583; }
-        .facebook { color: #552583; }
-        .instagram { color: #552583; }
+        .x { color: #000000; }
+        .facebook { color: #1877f2; }
+        .instagram { color: #e4405f; }
+        .share { color: #666; }
         footer {
-            background-color: #000000;
-            color: #FDB927;
+            background: linear-gradient(#d3d6da, #c0c4c8);
+            padding: 20px 0;
             text-align: center;
-            padding: 10px 0;
-            font-family: 'Arial', sans-serif;
-            font-size: 0.9rem;
-            box-shadow: 0 0 10px #FDB927;
-            animation: footerShine 3s infinite;
-        }
-        @keyframes footerShine {
-            0% { box-shadow: 0 0 10px #FDB927; }
-            50% { box-shadow: 0 0 20px #FFD700; }
-            100% { box-shadow: 0 0 10px #FDB927; }
+            margin-top: 20px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+            color: #444;
+            font-size: 1rem;
         }
         @media (max-width: 768px) {
-            nav ul {
+            header h1 { font-size: 1.6rem; }
+            .quote { font-size: 1rem; }
+            .template { 
+                padding: 15px; 
+                min-height: 150px; 
+            }
+            main { 
+                grid-template-columns: repeat(1, 1fr);
+                margin-top: 120px;
+            }
+            .tabs {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
             }
-            .content {
-                padding: 0 10px;
+            .social-icons { 
+                position: static; 
+                justify-content: center;
+                margin-top: 10px;
             }
-            #slideshow {
-                height: 200px;
-            }
-            .slide .title {
-                font-size: 1.5rem;
-            }
-            .slide .description {
-                font-size: 1rem;
-            }
-            .media-section {
-                flex-direction: column;
-            }
-            #youtube-carousel, #social-feeds {
-                width: 100%;
-                height: 150px;
-            }
-            .video-slide iframe {
-                width: 100%;
-                height: 100%;
-            }
-            .social-section {
-                bottom: 10px;
-                right: 10px;
-            }
-        }
-        .nav-buttons {
-            margin: 10px 0;
-            text-align: center;
-        }
-        .nav-buttons button {
-            background-color: #552583;
-            color: #FDB927;
-            border: 2px solid #FDB927;
-            border-radius: 5px;
-            padding: 10px 20px;
-            margin: 0 5px;
-            cursor: pointer;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .nav-buttons button:hover {
-            background-color: #3F2055;
-            box-shadow: 0 0 10px #FDB927;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ananthapuramu District Basketball Association</h1>
+        <h1>Pakodi Raajaa (పకొడి రాజా)</h1>
+        <div class="tabs">
+            <div class="tab active" data-lang="telugu">Telugu</div>
+            <div class="tab" data-lang="english">English</div>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="content">
-        <div id="slideshow">
-            <div class="slide active" style="background-image: url('https://scontent.fvga2-1.fna.fbcdn.net/v/t39.30808-6/485094591_1198615425602270_2071492870669749534_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=meHMpRW6MqQQ7kNvwHiyUzt&_nc_oc=AdnfmjcE8SMWtUKqoqecyRTQ5WkzumVJde267DmN_Yz6PhhwwJBdBqb1N2n07tpvluBzCaOYBX97hAp7H_inkgXT&_nc_zt=23&_nc_ht=scontent.fvga2-1.fna&_nc_gid=3abWgz6H10pabRSiKqQKhg&oh=00_AfEs1qKvBQzs0qRZInex60UWVMhCSy6QY9NfXlxs3c4_zA&oe=6816FF78');">
-                <div class="title">Welcome to ADBA!</div>
-                <div class="description">Join us for an exciting 2025 basketball season in Ananthapuramu District.</div>
-            </div>
-            <div class="slide" style="background-image: url('https://scontent.fhyd11-2.fna.fbcdn.net/v/t39.30808-6/463230970_2876914819122797_1663557415765265944_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=7tvXdVmSZ-kQ7kNvwEpIWRP&_nc_oc=Adlc9Yh0gaCiU7TAldvsdWPxV4-fZ_nn3LVY6bs77Br_x2Q5XxqJJZ8_85R8tjCvtlMAFWSQBhvLIOsOHzib6VOF&_nc_zt=23&_nc_ht=scontent.fhyd11-2.fna&_nc_gid=ooCb-KZTBuANlenbJhkYmA&oh=00_AfEhJunvpIwh-0bBdcSXTbPiBwDboQJ-dEkXE_q4OWGLLA&oe=68170452');">
-                <div class="title">Our beloved Bhaskar Reddy sir</div>
-                <div class="description">Remembering our former Basketball president of AP</div>
-            </div>
-            <div class="slide" style="background-image: url('https://scontent.fvga2-5.fna.fbcdn.net/v/t39.30808-6/462368510_2867181306762815_8496039909620920712_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=FApe5-9afMIQ7kNvwGThzFt&_nc_oc=AdkmHaGgU_a-e2KRG4SybWnQ_g2dSaYcLlSV1acwBlQ4Pah8HXiQKfD82y3-EOiMyp3HdOTIcr8lnjtYg1plZRhG&_nc_zt=23&_nc_ht=scontent.fvga2-5.fna&_nc_gid=df8sJNnZMPzLViHZMObVqQ&oh=00_AfF2t42dGUtcCnubPxFI_ItfHexEtvjB6ztRwo-XnozuYQ&oe=681A68EC');">
-                <div class="title">Community Day</div>
-                <div class="description">Where you all draw from Ananthapuramu SSBN Stadium.</div>
+    <main id="content">
+        <!-- Telugu Content -->
+        <div class="template telugu">
+            <div class="quote">"పూవు పుట్టుకలోనే వికసించినట్టు, కోచ్ ఆ కుర్రాడి నడకలోనే స్టైల్‌ను గుర్తించాడు" - Steve Jobs valla anna koduku</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
             </div>
         </div>
-        <div class="nav-buttons">
-            <button onclick="prevSlide()"><</button>
-            <button onclick="nextSlide()">></button>
-        </div>
-        <div class="media-section">
-            <div id="youtube-carousel">
-                <div class="video-slide active">
-                    <iframe src="https://www.youtube.com/embed/bfiwfx6y6Wg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-slide">
-                    <iframe src="https://www.youtube.com/embed/f7C5uYCiAs0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-slide">
-                    <iframe src="https://www.youtube.com/embed/5t7E1qQWegI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div id="social-feeds" class="feed">
-                <h3>Social Updates</h3>
-                <h4>Twitter</h4>
-                <ul>
-                    <li>Apr 29, 2025: Excited for our next game #ADBA #Basketball </li>
-                    <li>Apr 28, 2025: Thanks to our fans. #Ananthapuramu #ADBA </li>
-                    <li>Apr 27, 2025: Training camp starts tomorrow. Stay tuned! #ADBA </li>
-                </ul>
-                <h4>Facebook</h4>
-                <ul>
-                    <li>confirmation of Community Day on May 10! Details on our page. [Placeholder]</li>
-                    <li>Apr 28, 2025: Highlights from today's victory! Check our page for photos. [Placeholder]</li>
-                    <li>Apr 27, 2025: Training updates coming soon. Like us for more! [Placeholder]</li>
-                </ul>
-                <p>Note: Replace with official embeds from your ADBA Twitter and Facebook pages.</p>
+        <div class="template telugu">
+            <div class="quote">D: Gyms anni close unnai 🤦🏻‍♂️.
+V: Intlo dumbles unnai ga inke vadochu ga💁🏻‍♂️.
+D: Neeku brain undi ga Mari vadatlede?😎   - Oka peda manishi</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
             </div>
         </div>
-        <div class="nav-buttons">
-            <button onclick="prevVideo()"><</button>
-            <button onclick="nextVideo()">></button>
+        <div class="template telugu">
+            <div class="quote">"Choosi choosi wait chesi chesi
+Carry bags ki bokkalu paduthunnai, Eppudu osthav raaa." - Thoda raja</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
         </div>
-        <section id="team">
-            <h2>Our Team</h2>
-            <ul>
-                <li>Coaches: </li>
-                <ul><li>Afash Khan - Indoor Stadium, Ashok Nagar</li>
-                <li>Narendra Krishna - SSBN degree college </li>
-                <li>Jeelan Basha - PTC grounds </li>
-                <li>Mohan Raju - JNTU ground</li>
-                <li></li> </ul>
-            </ul>
-        </section>
-        <section id="schedule">
-            <h2>Upcoming Games</h2>
-            <ul>
-                <li>U23 3X3 Inter District Basketball championship in the last week of May 2025 Or The First week of June at Vijayawada.[Later the camp will be in Chittoor. Nationals will be from 12th to 14th June 2025 at Kochi , Kerala.]</li>
-                <li>Inter District Sub-juniors from May 15th to 18th, 2025 at PES public school, Chittoor, Andhra Pradesh</li>
-                <li></li>
-            </ul>
-        </section>
-        <section id="news">
-            <h2>Latest News</h2>
-            <p>Stay tuned for more updates.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: basketballadba@gmail.com</p>
-            <p>Phone: (123)</p>
-        </section>
-    </div>
-    <div class="social-section">
-        <p>Follow us for more content!</p>
-        <div class="social-icons">
-            <a href="https://x.com/basketballadba" target="_blank" class="x" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.facebook.com/ATPDBA/" target="_blank" class="facebook" title="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" class="instagram" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+        <div class="template telugu">
+            <div class="quote">"you: ela unnav ra ?
+                me: emundhi bro, Paina pataram lopala bokkala poratam." - N mowa</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
         </div>
-    </div>
+        <div class="template telugu">
+            <div class="quote">"All infia andagadu association president, Nee andaanni thattukovadaaniki kotha desham sthaapinchaaru." - SK</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template telugu">
+            <div class="quote">"maa ooriki occhi cheppakunda vellipoye pythakari mokhamoda." - SK mowa</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template telugu">
+            <div class="quote">"evaru athanu? Ostha ostha ani bastha mokham vesukuni untadu chooodu, vaade." - SK churchill</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template telugu">
+            <div class="quote">"Aananda baashpalu mukkulonunchi vasthunnai mama." - SK Roosevelt</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template telugu">
+            <div class="quote">"ni alochana galeez aithey,adey nuvvu kuda ." - Buddha</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <!-- English Content -->
+        <div class="template english">
+            <div class="quote">"Life’s too short to wear boring shoes." - Anonymous</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Why fit in when you were born to stand out?" - Dr. Seuss</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Coffee: because adulting is hard." - Unknown</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+ Brak            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Dream big, nap often." - Lazy Philosopher</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"The Wi-Fi is weak, but my vibes are strong." - Tech Guru</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"I’m not lazy, I’m just on energy-saving mode." - Couch Potato</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Keep it real, even if it’s messy." - Life Coach</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Be a pineapple: stand tall, wear a crown, and be sweet." - Fruit Sage</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+        <div class="template english">
+            <div class="quote">"Don’t let Monday ruin your Sunday." - Weekend Warrior</div>
+            <div class="social-icons">
+                <a href="#" class="x" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="share-link share" title="Copy Link"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+    </main>
     <footer>
-        <p>2025. ADBA. All Rights Reserved</p>
+        © 2025 Pakodi. All rights reserved.
     </footer>
+
     <script>
-        // Slideshow functionality
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        function showSlides() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
-        }
-        setInterval(showSlides, 5000);
-        showSlides();
-        // YouTube carousel functionality
-        let videoIndex = 0;
-        const videoSlides = document.querySelectorAll('.video-slide');
-        function showVideoSlides() {
-            videoSlides.forEach(slide => slide.classList.remove('active'));
-            videoIndex = (videoIndex + 1) % videoSlides.length;
-            videoSlides[videoIndex].classList.add('active');
-        }
-        setInterval(showVideoSlides, 5000);
-        showVideoSlides();
-        // Navigate slideshow
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === slideIndex) {
-                    slide.classList.add('active');
-                }
+        const tabs = document.querySelectorAll('.tab');
+        const main = document.querySelector('#content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const lang = tab.dataset.lang;
+                const templates = main.querySelectorAll('.template');
+
+                templates.forEach(template => {
+                    template.style.display = template.classList.contains(lang) ? 'flex' : 'none';
+                });
+
+                main.style.gridTemplateColumns = 'repeat(3, 1fr)';
             });
-        }
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === slideIndex) {
-                    slide.classList.add('active');
-                }
+        });
+
+        // Initialize Telugu as default
+        document.querySelector('.tab[data-lang="telugu"]').click();
+
+        document.querySelectorAll('.social-icons a, .share-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const platform = link.title.split(' ').pop().toLowerCase();
+                const quote = link.closest('.template').querySelector('.quote').textContent;
+                const encodedQuote = encodeURIComponent(quote);
+                const pageUrl = window.location.href;
+                const encodedPageUrl = encodeURIComponent(pageUrl);
+
+                const shareUrls = {
+                    x: `https://x.com/intent/tweet?text=${encodedQuote}&url=${encodedPageUrl}`,
+                    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedPageUrl}&quote=${encodedQuote}`,
+                    instagram: () => { alert("Instagram sharing requires their API."); return; },
+                    link: () => navigator.clipboard.writeText(pageUrl)
+                        .then(() => alert('Link copied to clipboard!'))
+                        .catch(() => alert('Failed to copy link.'))
+                };
+
+                const action = shareUrls[platform];
+                if (typeof action === 'function') action();
+                else if (action) window.open(action, '_blank');
             });
-        }
-        // Navigate YouTube carousel
-        function prevVideo() {
-            videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
-            videoSlides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === videoIndex) {
-                    slide.classList.add('active');
-                    const iframe = slide.querySelector('iframe');
-                    iframe.src = iframe.src; // Reset src to reload the video
-                }
-            });
-        }
-        function nextVideo() {
-            videoIndex = (videoIndex + 1) % videoSlides.length;
-            videoSlides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === videoIndex) {
-                    slide.classList.add('active');
-                    const iframe = slide.querySelector('iframe');
-                    iframe.src = iframe.src; // Reset src to reload the video
-                }
-            });
-        }
+        });
     </script>
 </body>
 </html>
