@@ -163,39 +163,40 @@
         }
         #social-feeds {
             width: 50%;
-            height: 250px;
+            height: 300px;
             background-color: #F5F5F5;
             padding: 15px;
             border-radius: 8px;
             box-shadow: inset 0 0 10px rgba(253, 185, 39, 0.5);
             overflow-y: auto;
             color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
         .feed h3 {
             margin-top: 0;
             font-family: 'Arial Black', sans-serif;
             font-size: 1.5rem;
             color: #000000;
+            text-align: center;
         }
-        .feed h4 {
-            margin: 10px 0 5px;
-            font-family: 'Arial', sans-serif;
-            color: #000000;
-        }
-        .feed ul {
-            list-style: none;
-            padding: 0;
-        }
-        .feed ul li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #E0E0E0;
+        .feed .social-embed {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #FDB927;
             border-radius: 5px;
-            color: #000000;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(253, 185, 39, 0.3);
         }
-        .feed p {
-            color: #000000;
+        .feed .social-embed.twitter {
+            height: 250px;
+            overflow-y: auto;
+        }
+        .feed .social-embed.facebook iframe {
+            width: 100%;
+            height: 250px;
         }
         section {
             background-color: #F5F5F5;
@@ -325,7 +326,7 @@
             }
             #youtube-carousel, #social-feeds {
                 width: 100%;
-                height: 150px;
+                height: 400px;
             }
             .video-slide iframe {
                 width: 100%;
@@ -338,6 +339,15 @@
             #team ul.coach-list li img {
                 width: 40px;
                 height: 40px;
+            }
+            .feed .social-embed {
+                max-width: 100%;
+            }
+            .feed .social-embed.twitter {
+                height: 200px;
+            }
+            .feed .social-embed.facebook iframe {
+                height: 200px;
             }
         }
         .nav-buttons {
@@ -408,16 +418,13 @@
             </div>
             <div id="social-feeds" class="feed">
                 <h3>Social Updates</h3>
-                <h4>Twitter</h4>
-                <ul>
-                  <a class="twitter-timeline" href="https://twitter.com/basketballadba?ref_src=twsrc%5Etfw">Tweets by basketballadba</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    
-                </ul>
-                <h4>Facebook</h4>
-                <ul>
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FATPDBA&tabs=timeline&width=400&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    
-                </ul>
+                <div class="social-embed twitter">
+                    <a class="twitter-timeline" href="https://twitter.com/basketballadba?ref_src=twsrc%5Etfw" data-height="250">Tweets by basketballadba</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="social-embed facebook">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FATPDBA&tabs=timeline&width=400&height=250&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
             </div>
         </div>
         <div class="nav-buttons">
