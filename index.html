@@ -360,6 +360,75 @@
             background-color: #3F2055;
             box-shadow: 0 0 10px #FDB927;
         }
+         #achievements {
+        background-color: #F5F5F5;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(253, 185, 39, 0.3), inset 0 0 10px rgba(253, 185, 39, 0.2);
+        color: #000000;
+    }
+    #achievements h2 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 1.8rem;
+        color: #552583;
+        margin-bottom: 15px;
+        padding: 10px; /* Trimmed padding for headline */
+    }
+    .achievement {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(253, 185, 39, 0.5);
+        padding: 15px;
+    }
+    .achievement img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 20px;
+        border: 2px solid #FDB927;
+    }
+    .achievement-content {
+        flex: 1;
+    }
+    .achievement-content h3 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 1.5rem;
+        color: #552583;
+        margin: 0 0 10px;
+        padding: 5px; /* Trimmed padding for sub-headline */
+    }
+    .achievement-content p {
+        font-family: 'Arial', sans-serif;
+        font-size: 1rem;
+        color: #000000;
+        margin: 0;
+        line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+        .achievement {
+            flex-direction: column;
+            text-align: center;
+        }
+        .achievement img {
+            margin-right: 0;
+            margin-bottom: 10px;
+            width: 100px;
+            height: 100px;
+        }
+        #achievements h2 {
+            font-size: 1.5rem;
+            padding: 8px; /* Slightly adjusted for mobile */
+        }
+        .achievement-content h3 {
+            font-size: 1.2rem;
+            padding: 5px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -369,9 +438,9 @@
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#schedule">Schedule</a></li>
             <li><a href="#news">News</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#team">Team</a></li>               
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -423,7 +492,42 @@
             <button onclick="prevVideo()"><</button>
             <button onclick="nextVideo()">></button>
         </div>
-        <section id="team">
+        <section id="schedule">
+            <h2>NEWS</h2>
+            <ul>
+                <li></li>
+                <li>U23 3X3 Inter District Basketball championship in the last week of May 2025 Or The First week of June at Vijayawada.[Later the camp will be in Chittoor. Nationals will be from 12th to 14th June 2025 at Kochi , Kerala.]</li>
+                <li>Inter District Sub-juniors from May 15th to 18th, 2025 at PES public school, Chittoor, Andhra Pradesh</li>
+                
+            </ul>
+        </section>
+
+        </section>
+        <section id="achievements">
+    <h2>Our Achievements</h2>
+    <div class="achievement">
+        <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*r2BRNJLH0BPAgZBSCRgfSA.jpeg" alt="2025 Sub-Junior Championship Runner-Up">
+        <div class="achievement-content">
+            <h3>Rising Stars: Remarkable Play at the AP 10th Sub-Junior Basketball Finals 2025</h3>
+            <p>The 10th AP Sub-Junior Inter District Basketball Championship, held at PES Public School grounds, Chittoor (AP) from May 15th-18th, 2025, saw our boys deliver an outstanding campaign. In a thrilling final, they narrowly fell to East Godavari with a score of 35–38. Despite the close loss, their remarkable play and unwavering determination throughout the game earned them significant recognition and respect from everyone involved in the competition.</p>
+        </div>
+    </div>
+    <div class="achievement">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 Community Basketball Camp">
+        <div class="achievement-content">
+            <h3>2024 Community Basketball Camp</h3>
+            <p>ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging over 100 young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed coaches, strengthening local talent development.</p>
+        </div>
+    </div>
+    <div class="achievement">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 U23 District Championship">
+        <div class="achievement-content">
+            <h3>Top-Three Finish at 2024 U23 District Championship</h3>
+            <p>Our U23 team excelled at the 2024 Inter District 3x3 Basketball Championship in Vijayawada, securing a top-three position. Their dynamic play and teamwork highlighted ADBA’s commitment to nurturing competitive talent across age groups.</p>
+        </div>
+    </div>
+</section>
+<section id="team">
             <h2>Our Team</h2>
             <ul>
                 <li>Coaches:</li>
@@ -446,18 +550,6 @@
                     </li>
                 </ul>
             </ul>
-        </section>
-        <section id="schedule">
-            <h2>Upcoming Games</h2>
-            <ul>
-                <li>U23 3X3 Inter District Basketball championship in the last week of May 2025 Or The First week of June at Vijayawada.[Later the camp will be in Chittoor. Nationals will be from 12th to 14th June 2025 at Kochi , Kerala.]</li>
-                <li>Inter District Sub-juniors from May 15th to 18th, 2025 at PES public school, Chittoor, Andhra Pradesh</li>
-                <li></li>
-            </ul>
-        </section>
-        <section id="news">
-            <h2>Latest News</h2>
-            <p>Stay tuned for more updates.</p>
         </section>
         <section id="contact">
             <h2>Contact Us</h2>
