@@ -360,7 +360,7 @@
             background-color: #3F2055;
             box-shadow: 0 0 10px #FDB927;
         }
-         #achievements {
+          #achievements {
         background-color: #F5F5F5;
         padding: 20px;
         margin-bottom: 20px;
@@ -383,6 +383,7 @@
         border-radius: 8px;
         box-shadow: 0 0 5px rgba(253, 185, 39, 0.5);
         padding: 15px;
+        cursor: pointer; /* Indicates clickability */
     }
     .achievement img {
         width: 150px;
@@ -391,6 +392,10 @@
         border-radius: 8px;
         margin-right: 20px;
         border: 2px solid #FDB927;
+        transition: transform 0.2s ease;
+    }
+    .achievement img:hover, .achievement-content h3:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
     }
     .achievement-content {
         flex: 1;
@@ -409,6 +414,66 @@
         margin: 0;
         line-height: 1.5;
     }
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+    .modal-content {
+        background-color: #F5F5F5;
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: 0 0 15px #FDB927;
+        position: relative;
+        color: #000000;
+    }
+    .modal-content img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #FDB927;
+        margin-bottom: 15px;
+        cursor: pointer; /* Indicates image is clickable */
+    }
+    .modal-content h3 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 1.8rem;
+        color: #552583;
+        margin: 0 0 10px;
+        padding: 5px;
+    }
+    .modal-content p {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.1rem;
+        color: #000000;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: #552583;
+        cursor: pointer;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+    }
+    .close-btn:hover {
+        color: #FDB927;
+    }
     @media (max-width: 768px) {
         .achievement {
             flex-direction: column;
@@ -422,11 +487,24 @@
         }
         #achievements h2 {
             font-size: 1.5rem;
-            padding: 8px; /* Slightly adjusted for mobile */
+            padding: 8px;
         }
         .achievement-content h3 {
             font-size: 1.2rem;
             padding: 5px;
+        }
+        .modal-content {
+            width: 95%;
+            padding: 15px;
+        }
+        .modal-content img {
+            max-height: 200px;
+        }
+        .modal-content h3 {
+            font-size: 1.4rem;
+        }
+        .modal-content p {
+            font-size: 1rem;
         }
     }
     </style>
@@ -505,28 +583,36 @@
         </section>
         <section id="achievements">
     <h2>Our Achievements</h2>
-    <div class="achievement">
+    <div class="achievement" data-image="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*r2BRNJLH0BPAgZBSCRgfSA.jpeg" data-title="Rising Stars: Remarkable Play at the AP 10th Sub-Junior Basketball Finals 2025" data-description="The 10th AP Sub-Junior Inter District Basketball Championship, held at PES Public School grounds, Chittoor (AP) from May 15th-18th, 2025, saw our boys deliver an outstanding campaign. In a thrilling final, they narrowly fell to East Godavari with a score of 35–38. Despite the close loss, their remarkable play and unwavering determination throughout the game earned them significant recognition and respect from everyone involved in the competition.">
         <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*r2BRNJLH0BPAgZBSCRgfSA.jpeg" alt="2025 Sub-Junior Championship Runner-Up">
         <div class="achievement-content">
             <h3>Rising Stars: Remarkable Play at the AP 10th Sub-Junior Basketball Finals 2025</h3>
             <p>The 10th AP Sub-Junior Inter District Basketball Championship, held at PES Public School grounds, Chittoor (AP) from May 15th-18th, 2025, saw our boys deliver an outstanding campaign. In a thrilling final, they narrowly fell to East Godavari with a score of 35–38. Despite the close loss, their remarkable play and unwavering determination throughout the game earned them significant recognition and respect from everyone involved in the competition.</p>
         </div>
     </div>
-    <div class="achievement">
+    <div class="achievement" data-image="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" data-title="2024 Community Basketball Camp" data-description="ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging over 100 young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed coaches, strengthening local talent development.">
         <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 Community Basketball Camp">
         <div class="achievement-content">
-            <h3>2024 Community Basketball Camp</h3>
-            <p>ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging over 100 young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed coaches, strengthening local talent development.</p>
+            <h3>2025 Basketball Summer Coaching Camp</h3>
+            <p>ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging hundrends of young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed NIS coaches, strengthening local talent development.</p>
         </div>
     </div>
-    <div class="achievement">
+    <div class="achievement" data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" data-title="Top-Three Finish at 2024 U23 District Championship" data-description="Our U23 team excelled at the 2024 Inter District 3x3 Basketball Championship in Vijayawada, securing a top-three position. Their dynamic play and teamwork highlighted ADBA’s commitment to nurturing competitive talent across age groups.">
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 U23 District Championship">
         <div class="achievement-content">
-            <h3>Top-Three Finish at 2024 U23 District Championship</h3>
+            <h3>Anan</h3>
             <p>Our U23 team excelled at the 2024 Inter District 3x3 Basketball Championship in Vijayawada, securing a top-three position. Their dynamic play and teamwork highlighted ADBA’s commitment to nurturing competitive talent across age groups.</p>
         </div>
     </div>
 </section>
+<div id="achievementModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img id="modalImage" src="" alt="Achievement Image">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+    </div>
+</div>
 <section id="team">
             <h2>Our Team</h2>
             <ul>
@@ -631,6 +717,51 @@
                 }
             });
         }
+        // Modal functionality for Achievements
+    const modal = document.getElementById('achievementModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = document.querySelector('.close-btn');
+    const achievements = document.querySelectorAll('.achievement');
+
+    achievements.forEach(achievement => {
+        const img = achievement.querySelector('img');
+        const title = achievement.querySelector('h3');
+        img.addEventListener('click', () => openModal(achievement));
+        title.addEventListener('click', () => openModal(achievement));
+    });
+
+    function openModal(achievement) {
+        const imageSrc = achievement.getAttribute('data-image');
+        const titleText = achievement.getAttribute('data-title');
+        const descriptionText = achievement.getAttribute('data-description');
+        
+        modalImage.src = imageSrc;
+        modalImage.alt = titleText;
+        modalTitle.textContent = titleText;
+        modalDescription.textContent = descriptionText;
+        
+        modal.style.display = 'flex';
+    }
+
+    // Close modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Open image in new tab when clicked in modal
+    modalImage.addEventListener('click', () => {
+        window.open(modalImage.src, '_blank');
+    });
+
     </script>
 </body>
 </html>
