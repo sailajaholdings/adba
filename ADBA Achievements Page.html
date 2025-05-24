@@ -1,0 +1,501 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Ananthapuramu District Basketball Association</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle at center, #4B0082, #000000);
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #552583, #3F2055);
+            color: #FFFFFF;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(85, 37, 131, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: box-shadow 0.3s ease;
+        }
+        header h1 {
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        nav {
+            background-color: #000000;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #FDB927;
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #FFD700;
+            box-shadow: 0 0 10px #FDB927;
+        }
+        nav ul li a.active {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #achievements {
+            background-color: #F5F5F5;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(253, 185, 39, 0.3), inset 0 0 10px rgba(253, 185, 39, 0.2);
+            color: #000000;
+        }
+        #achievements h2 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            color: #552583;
+            margin-bottom: 15px;
+            padding: 10px; /* Trimmed padding for headline */
+        }
+        .achievement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(253, 185, 39, 0.5);
+            padding: 15px;
+            cursor: pointer; /* Indicates clickability */
+        }
+        .achievement img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            border: 2px solid #FDB927;
+            transition: transform 0.2s ease;
+        }
+        .achievement img:hover, .achievement-content h3:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+        .achievement-content {
+            flex: 1;
+        }
+        .achievement-content h3 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.5rem;
+            color: #552583;
+            margin: 0 0 10px;
+            padding: 5px; /* Trimmed padding for sub-headline */
+        }
+        .achievement-content p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            color: #000000;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .achievement-id {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            color: #555555;
+            margin-bottom: 5px;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+        .modal-content {
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 15px #FDB927;
+            position: relative;
+            color: #000000;
+        }
+        .modal-content img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #FDB927;
+            margin-bottom: 15px;
+            cursor: pointer; /* Indicates image is clickable */
+        }
+        .modal-content h3 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            color: #552583;
+            margin: 0 0 10px;
+            padding: 5px;
+        }
+        .modal-content p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            color: #000000;
+            margin: 0 0 15px;
+            line-height: 1.5;
+        }
+        .modal-content .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 15px;
+        }
+        .modal-content .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #FDB927;
+            border-radius: 8px;
+        }
+        .modal-content a.video-link {
+            color: #552583;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .modal-content a.video-link:hover {
+            color: #FDB927;
+            text-decoration: underline;
+        }
+        .modal-content .achievement-id {
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #552583;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        .close-btn:hover {
+            color: #FDB927;
+        }
+        .social-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 10;
+        }
+        .social-section p {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            color: #FDB927;
+            background-color: #000000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #FDB927;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #FDB927;
+            border: 2px solid #552583;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 5px #FDB927;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #FDB927;
+        }
+        .x { color: #552583; }
+        .facebook { color: #552583; }
+        .instagram { color: #552583; }
+        footer {
+            background-color: #000000;
+            color: #FDB927;
+            text-align: center;
+            padding: 10px 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px #FDB927;
+            animation: footerShine 3s infinite;
+        }
+        @keyframes footerShine {
+            0% { box-shadow: 0 0 10px #FDB927; }
+            50% { box-shadow: 0 0 20px #FFD700; }
+            100% { box-shadow: 0 0 10px #FDB927; }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            .content {
+                padding: 0 10px;
+            }
+            .achievement {
+                flex-direction: column;
+                text-align: center;
+            }
+            .achievement img {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100px;
+                height: 100px;
+            }
+            #achievements h2 {
+                font-size: 1.5rem;
+                padding: 8px;
+            }
+            .achievement-content h3 {
+                font-size: 1.2rem;
+                padding: 5px;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            .modal-content img {
+                max-height: 200px;
+            }
+            .modal-content h3 {
+                font-size: 1.4rem;
+            }
+            .modal-content p {
+                font-size: 1rem;
+            }
+            .modal-content .video-container {
+                padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+            }
+            .social-section {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ananthapuramu District Basketball Association</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#news">News</a></li>
+            <li><a href="achievements.html" class="active">Achievements</a></li>
+            <li><a href="index.html#schedule">Schedule</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <section id="achievements">
+            <h2>Our Achievements</h2>
+            <div class="achievement" id="achievement-1" data-image="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*r2BRNJLH0BPAgZBSCRgfSA.jpeg" data-title="Rising Stars: Remarkable Play at the AP 10th Sub-Junior Basketball Finals 2025" data-description="The 10th AP Sub-Junior Inter District Basketball Championship, held at PES Public School grounds, Chittoor (AP) from May 15th-18th, 2025, saw our boys deliver an outstanding campaign. In a thrilling final, they narrowly fell to East Godavari with a score of 35–38. Despite the close loss, their remarkable play and unwavering determination throughout the game earned them significant recognition and respect from everyone involved in the competition." data-video="https://www.youtube.com/embed/bfiwfx6y6Wg">
+                <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*r2BRNJLH0BPAgZBSCRgfSA.jpeg" alt="2025 Sub-Junior Championship Runner-Up">
+                <div class="achievement-content">
+                    <div class="achievement-id">ID: achievement-1</div>
+                    <h3>Rising Stars: Remarkable Play at the AP 10th Sub-Junior Basketball Finals 2025</h3>
+                    <p>The 10th AP Sub-Junior Inter District Basketball Championship, held at PES Public School grounds, Chittoor (AP) from May 15th-18th, 2025, saw our boys deliver an outstanding campaign. In a thrilling final, they narrowly fell to East Godavari with a score of 35–38. Despite the close loss, their remarkable play and unwavering determination throughout the game earned them significant recognition and respect from everyone involved in the competition.</p>
+                </div>
+            </div>
+            <div class="achievement" id="achievement-2" data-image="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" data-title="2024 Community Basketball Camp" data-description="ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging over 100 young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed coaches, strengthening local talent development." data-video="">
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 Community Basketball Camp">
+                <div class="achievement-content">
+                    <div class="achievement-id">ID: achievement-2</div>
+                    <h3>2024 Community Basketball Camp</h3>
+                    <p>ADBA hosted a successful basketball camp at SSBN Stadium in Ananthapuramu, engaging over 100 young athletes. The initiative fostered community spirit, promoted basketball, and provided training under our esteemed coaches, strengthening local talent development.</p>
+                </div>
+            </div>
+            <div class="achievement" id="achievement-3" data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" data-title="Top-Three Finish at 2024 U23 District Championship" data-description="Our U23 team excelled at the 2024 Inter District 3x3 Basketball Championship in Vijayawada, securing a top-three position. Their dynamic play and teamwork highlighted ADBA’s commitment to nurturing competitive talent across age groups." data-video="https://www.youtube.com/embed/f7C5uYCiAs0">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="2024 U23 District Championship">
+                <div class="achievement-content">
+                    <div class="achievement-id">ID: achievement-3</div>
+                    <h3>Top-Three Finish at 2024 U23 District Championship</h3>
+                    <p>Our U23 team excelled at the 2024 Inter District 3x3 Basketball Championship in Vijayawada, securing a top-three position. Their dynamic play and teamwork highlighted ADBA’s commitment to nurturing competitive talent across age groups.</p>
+                </div>
+            </div>
+        </section>
+        <div id="achievementModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">×</span>
+                <div class="achievement-id" id="modalId"></div>
+                <img id="modalImage" src="" alt="Achievement Image">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div id="modalVideo" class="video-container"></div>
+                <a id="modalVideoLink" class="video-link" href="" target="_blank" style="display: none;">Watch Video</a>
+            </div>
+        </div>
+    </div>
+    <div class="social-section">
+        <p>Follow us for more content!</p>
+        <div class="social-icons">
+            <a href="https://x.com/basketballadba" target="_blank" class="x" title="Follow on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/ATPDBA/" target="_blank" class="facebook" title="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/basketballadba/" target="_blank" class="instagram" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <footer>
+        <p>2025. ADBA. All Rights Reserved</p>
+    </footer>
+    <script>
+        // Modal functionality for Achievements
+        const modal = document.getElementById('achievementModal');
+        const modalId = document.getElementById('modalId');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalVideoLink = document.getElementById('modalVideoLink');
+        const closeBtn = document.querySelector('.close-btn');
+        const achievements = document.querySelectorAll('.achievement');
+
+        achievements.forEach(achievement => {
+            const img = achievement.querySelector('img');
+            const title = achievement.querySelector('h3');
+            img.addEventListener('click', () => openModal(achievement));
+            title.addEventListener('click', () => openModal(achievement));
+        });
+
+        function openModal(achievement) {
+            const id = achievement.id;
+            const imageSrc = achievement.getAttribute('data-image');
+            const titleText = achievement.getAttribute('data-title');
+            const descriptionText = achievement.getAttribute('data-description');
+            const videoUrl = achievement.getAttribute('data-video');
+
+            modalId.textContent = `ID: ${id}`;
+            modalImage.src = imageSrc;
+            modalImage.alt = titleText;
+            modalTitle.textContent = titleText;
+            modalDescription.textContent = descriptionText;
+
+            // Handle video content
+            modalVideo.innerHTML = '';
+            modalVideoLink.style.display = 'none';
+            if (videoUrl) {
+                if (videoUrl.includes('youtube.com/embed')) {
+                    modalVideo.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                } else {
+                    modalVideoLink.href = videoUrl;
+                    modalVideoLink.textContent = 'Watch Video';
+                    modalVideoLink.style.display = 'inline-block';
+                }
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalVideo.innerHTML = ''; // Clear video to stop playback
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalVideo.innerHTML = ''; // Clear video to stop playback
+            }
+        });
+
+        modalImage.addEventListener('click', () => {
+            window.open(modalImage.src, '_blank');
+        });
+    </script>
+</body>
+</html>
